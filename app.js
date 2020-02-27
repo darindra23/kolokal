@@ -5,6 +5,7 @@ const routes = require('./routes')
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('pictures'))
 app.use(routes)
 
 app.listen(port, () => console.log("Listening On Port :", port));
