@@ -43,17 +43,20 @@ class Controller {
             });
     }
     static addWatchList(req, res) {
-        let option = {
-            UserId: req.params.userId,
-            MovieId: req.params.movieId
-        };
-        Watchlist.create(option)
-            .then(() => {
-                res.send("Berhasil");
-            })
-            .catch(err => {
-                res.send(err);
-            });
+        if (!req.session.user) {
+            res.redirect('/login');
+        } else {
+            let option = {
+                UserId: req.session.user.id,
+                MovieId: req.params.movieId
+            }
+            Watchlist.create(option)
+                .then(() => {
+                    res.redirect('/user')
+                }).catch(err => {
+                    res.send(err);
+                });
+        }
     }
     static login(req, res) {
         if (!req.session.user) {
