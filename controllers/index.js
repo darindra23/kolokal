@@ -60,8 +60,20 @@ class Controller {
         res.render("register");
     }
     static registerData(req, res) {
-        console.log(req.body);
-        res.send(req.body);
+        let obj = {
+            first_name: req.body.firstname,
+            last_name: req.body.lastname,
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password
+        }
+        User.create(obj)
+            .then(() => {
+                res.redirect('/');
+            }).catch(err => {
+                res.send(err);
+            });
+        // res.send(req.body);
     }
 }
 

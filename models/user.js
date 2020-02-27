@@ -25,9 +25,14 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING
   }, {
     sequelize,
-    beforeCreate: (instance, options) => {
-      let password = instance.password;
-      instance.password = bycrpt(password);
+    hooks: {
+      beforeCreate: (instance, options) => {
+        let password = instance.password;
+        return bycrpt(password)
+          .then(data => {
+            instance.password = data;
+          })
+      }
     }
   })
 
