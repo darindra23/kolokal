@@ -46,7 +46,7 @@ class Controller {
       };
       Watchlist.create(option)
         .then(() => {
-          res.redirect("/user");
+          res.redirect("/movieslist");
         })
         .catch(err => {
           res.send(err);
