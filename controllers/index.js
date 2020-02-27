@@ -5,11 +5,11 @@ class Controller {
   static home(req, res) {
     let condition = {
       limit: 5,
-      order : [['id','ASC']]
+      order: [["id", "ASC"]]
     };
     Movie.findAll(condition)
       .then(data => {
-          console.log(data[0]);
+        console.log(data[0]);
         res.render("home", { data });
       })
       .catch(err => {
@@ -17,9 +17,12 @@ class Controller {
       });
   }
   static movieList(req, res) {
-    Movie.findAll()
+    let condition = {
+      order: [["id", "ASC"]]
+    };
+    Movie.findAll(condition)
       .then(data => {
-        res.send(data);
+        res.render("list", { data });
       })
       .catch(err => {
         res.send(err);
@@ -48,4 +51,3 @@ class Controller {
 }
 
 module.exports = Controller;
-
