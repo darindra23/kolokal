@@ -77,10 +77,10 @@ class Controller {
             }).then(pass => {
                 if (pass) {
                     req.session.user = {
-                        id: userData.id
-                    }
-                    // res.send(req.session.user);
-                    // console.log(req.session.user);
+                            id: userData.id
+                        }
+                        // res.send(req.session.user);
+                        // console.log(req.session.user);
                     res.redirect('/user');
                 } else {
                     res.send('Salah');
@@ -110,6 +110,11 @@ class Controller {
                 res.send(err);
             });
         // res.send(req.body);
+    }
+    static logout(req, res) {
+        req.session.destroy(() => {
+            res.redirect('/');
+        })
     }
 }
 
