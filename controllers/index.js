@@ -1,5 +1,5 @@
-const { User, Movie, Watchlist } = require('../models/index');
-const { compare } = require('../helpers/bycrypt');
+const { User, Movie, Watchlist } = require("../models/index");
+const { compare } = require("../helpers/bycrypt");
 
 // API KEY =  ee55e28c81ef2d96e16ed4fd23a15778
 class Controller {
