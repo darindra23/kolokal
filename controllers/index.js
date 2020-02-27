@@ -3,9 +3,9 @@ const { User, Movie, Watchlist } = require('../models/index');
 // API KEY =  ee55e28c81ef2d96e16ed4fd23a15778
 class Controller {
     static home(req, res) {
-        Movie.findAll({ limit: 5, include: User })
+        Movie.findAll({ limit: 5, order : [['id','ASC']] })
             .then(data => {
-                res.send(data);
+                res.render("home", { data });
             }).catch(err => {
                 res.send(err);
             });
@@ -55,6 +55,9 @@ class Controller {
     }
     static login(req, res) {
         res.render("login");
+    }
+    static loginData(req, res) {
+        res.send(req.body);
     }
     static register(req, res) {
         res.render("register");
