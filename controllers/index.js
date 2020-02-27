@@ -17,19 +17,16 @@ class Controller {
             });
     }
     static movieList(req, res) {
-        Movie.findAll()
+        let condition = {
+            order: [
+                ["id", "ASC"]
+            ]
+        };
+        Movie.findAll(condition)
             .then(data => {
-                res.send(data);
-            }).catch(err => {
-                res.send(err);
-            });
-    }
-    static showMovie(req, res) {
-        let movieId = Number(req.params.movieId);
-        Movie.findOne({ where: { id: movieId }, include: ReviewList })
-            .then(data => {
-                res.send(data);
-            }).catch(err => {
+                res.render("list", { data });
+            })
+            .catch(err => {
                 res.send(err);
             });
     }
@@ -85,10 +82,10 @@ class Controller {
             }).then(pass => {
                 if (pass) {
                     req.session.user = {
-                        id: userData.id
-                    }
-                    // res.send(req.session.user);
-                    // console.log(req.session.user);
+                            id: userData.id
+                        }
+                        // res.send(req.session.user);
+                        // console.log(req.session.user);
                     res.redirect('/user/1');
                 } else {
                     res.send('Salah');
