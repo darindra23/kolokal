@@ -40,8 +40,9 @@ class Controller {
             });
     }
     static addWatchList(req, res) {
+        let UserId = req.session.id;
         let option = {
-            UserId: req.params.userId,
+            UserId,
             MovieId: req.params.movieId
         }
         Watchlist.create(option)
