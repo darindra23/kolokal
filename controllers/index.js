@@ -47,7 +47,6 @@ class Controller {
                 UserId: req.session.user.id,
                 MovieId: req.params.movieId
             }
-            console.log(option);
             Watchlist.create(option)
                 .then(() => {
                     res.send('Berhasil')
