@@ -16,8 +16,7 @@ routes.post("/register", Controller.registerData);
 routes.get("/login", Controller.login);
 routes.post("/login", Controller.loginData);
 routes.get('/movieslist', Controller.movieList);
-routes.get('/movies/:movieId', Controller.showMovie);
-routes.get('/user/:userId', checkLogin, Controller.user);
-routes.get('/movies/addwatchlist/:movieId/:userId', checkLogin, Controller.addWatchList);
+routes.get('/user', checkLogin, Controller.user);
+routes.get('/movies/addwatchlist/:movieId/', checkLogin, Controller.addWatchList);
 
 module.exports = routes;
