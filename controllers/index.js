@@ -7,12 +7,13 @@ class Controller {
         Movie.findAll({
                 limit: 5,
                 order: [
-                    ['id', 'ASC']
+                    ["id", "ASC"]
                 ]
             })
             .then(data => {
                 res.render("home", { data });
-            }).catch(err => {
+            })
+            .catch(err => {
                 res.send(err);
             });
     }
@@ -34,33 +35,33 @@ class Controller {
         let id = req.session.user.id;
         User.findOne({ where: id, include: Movie })
             .then(data => {
-                res.send(data);
-            }).catch(err => {
+                console.log(data);
+                res.render("user", { data });
+            })
+            .catch(err => {
                 res.send(err);
             });
     }
     static addWatchList(req, res) {
-        if (!req.session.user) {
-            res.redirect('/login');
-        } else {
-            let option = {
-                UserId: req.session.user.id,
-                MovieId: req.params.movieId
-            }
-            Watchlist.create(option)
-                .then(() => {
-                    res.send('Berhasil')
-                }).catch(err => {
-                    res.send(err);
-                });
-        }
+        let option = {
+            UserId: req.params.userId,
+            MovieId: req.params.movieId
+        };
+        Watchlist.create(option)
+            .then(() => {
+                res.send("Berhasil");
+            })
+            .catch(err => {
+                res.send(err);
+            });
     }
     static login(req, res) {
         if (!req.session.user) {
             res.render("login");
         } else {
-            res.redirect('/');
+            res.redirect("/");
         }
+
     }
     static loginData(req, res) {
         let option = {
@@ -106,19 +107,20 @@ class Controller {
             username: req.body.username,
             email: req.body.email,
             password: req.body.password
-        }
+        };
         User.create(obj)
             .then(() => {
-                res.redirect('/');
-            }).catch(err => {
+                res.redirect("/");
+            })
+            .catch(err => {
                 res.send(err);
             });
         // res.send(req.body);
     }
     static logout(req, res) {
         req.session.destroy(() => {
-            res.redirect('/');
-        })
+            res.redirect("/");
+        });
     }
 }
 
