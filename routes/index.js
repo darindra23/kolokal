@@ -6,5 +6,10 @@ routes.get('/movieslist', Controller.movieList);
 routes.get('/movies/:movieId', Controller.showMovie);
 routes.get('/movies/addwatchlist/:movieId/:userId', Controller.addWatchList);
 routes.get('/user/:userId', Controller.user);
+// routes.get("/register", Controller.signup);
+routes.get("/login", Controller.login);
+routes.get("/movieslist", Controller.movieList);
+routes.get("/movies/:movieId", Controller.showMovie);
 
 module.exports = routes;
+
