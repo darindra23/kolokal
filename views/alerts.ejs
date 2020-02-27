@@ -1,0 +1,9 @@
+<div class="notification is-danger">
+  <% errors.forEach(i => { %>
+  <strong><%= i.message %></strong>
+  <br />
+  <%});%>
+  <button class="delete">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

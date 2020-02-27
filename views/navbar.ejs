@@ -57,20 +57,33 @@
 
         <% } else {%>
 
-         
-         
-
         <div class="navbar-end">
-          <div class="navbar-item">
-            <a class="navbar-item" style="color: white; background-color: #363636;" href="/user">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a
+              class="navbar-item"
+              style="color: white; background-color: #363636;"
+              href="/user"
+            >
               <%= user.name %>
-              <img src=" https://mattfarley.ca/img/mf-avatar.svg" width="40" height="30" />
+              <img
+                src=" https://mattfarley.ca/img/mf-avatar.svg"
+                width="40"
+                height="30"
+              />
             </a>
-            
+            <div class="navbar-dropdown" style="background-color: #363636;">
+              <a
+                href="/logout"
+                class="navbar-item"
+                style="background-color: #363636; color:hsl(171, 100%, 41%)"
+                >LOGOUT</a
+              >
+            </div>
           </div>
         </div>
-        <% } %>
       </div>
+
+      <% } %>
     </nav>
   </head>
   <body></body>

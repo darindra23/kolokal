@@ -10,58 +10,57 @@
               <h1
                 class="title is-spaced is-size-1-desktop is-size-2-tablet is-size-3-mobile"
               >
-               <%= data.getFullName() %>
+                <%= data.getFullName() %>
               </h1>
+
               <img
                 class="avatar"
                 src="https://mattfarley.ca/img/mf-avatar.svg"
               />
-              
             </div>
-            
           </div>
         </div>
       </div>
     </section>
     <div class="container">
-        <div class="columns">
-          <% for (let i = 0; i < data.Movies.length; i++) { %>
-          <div class="column">
-            <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by2">
-                  <img
-                    src="https://image.tmdb.org/t/p/w600_and_h900_bestv2<%=data.Movies[i].poster_path %>"
-                  />
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4"><%=data.Movies[i].title %></p>
-                    <p class="subtitle is-6"><%=data.Movies[i].release_date %></p>
-                  </div>
+      <div class="columns">
+        <% for (let i = 0; i < data.Movies.length; i++) { %>
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by2">
+                <img
+                  src="https://image.tmdb.org/t/p/w600_and_h900_bestv2<%=data.Movies[i].poster_path %>"
+                />
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <p class="title is-4"><%=data.Movies[i].title %></p>
+                  <p class="subtitle is-6"><%=data.Movies[i].release_date %></p>
                 </div>
-  
-                <div class="content">
-                  <%=data.Movies[i].summary %>
-                </div>
-                <a
-                  href="/add/watchlist/<%=data.Movies[i].id %>"
-                  style="color:hsl(171, 100%, 41%); text-align: center;"
-                >
-                  <span class="icon">
-                    <i class="fas fa-bookmark"></i> </span
-                  >Watched
-                </a>
               </div>
+
+              <div class="content">
+                <%=data.Movies[i].summary %>
+              </div>
+              <a
+                href="/delete/<%=data.Movies[i].id %>"
+                style="color:hsl(171, 100%, 41%); text-align: center;"
+              >
+                <span class="icon"> <i class="fas fa-bookmark"></i> </span
+                >Watched
+              </a>
             </div>
           </div>
-  
-          <%} %>
         </div>
+
+        <%} %>
       </div>
-  
+    </div>
+    <br />
+    <br />
   </body>
   <footer class="footer" style="background-color: #363636;;">
     <div class="content has-text-centered">
