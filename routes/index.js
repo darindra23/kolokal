@@ -18,5 +18,6 @@ routes.get("/movieslist", Controller.movieList);
 routes.get("/user", checkLogin, Controller.user);
 routes.get("/add/watchlist/:movieId", checkLogin, Controller.addWatchList);
 routes.get("/logout", checkLogin, Controller.logout);
+routes.get("/delete/:movieId", checkLogin, Controller.delete);
 
 module.exports = routes;
