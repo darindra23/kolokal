@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Watchlist = sequelize.define('Watchlist', {
     UserId: DataTypes.INTEGER,
-    MoiveId: DataTypes.INTEGER
+    MovieId: DataTypes.INTEGER
   }, {});
   Watchlist.associate = function(models) {
     // associations can be defined here

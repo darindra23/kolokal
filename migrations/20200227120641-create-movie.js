@@ -1,18 +1,24 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Reviewlists', {
+    return queryInterface.createTable('Movies', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      UserId: {
-        type: Sequelize.INTEGER
+      title: {
+        type: Sequelize.STRING
       },
-      MovieId: {
-        type: Sequelize.INTEGER
+      summary: {
+        type: Sequelize.TEXT
+      },
+      poster_path: {
+        type: Sequelize.STRING
+      },
+      release_date: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -25,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Reviewlists');
+    return queryInterface.dropTable('Movies');
   }
 };

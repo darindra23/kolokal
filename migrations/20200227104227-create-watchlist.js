@@ -11,7 +11,7 @@ module.exports = {
       UserId: {
         type: Sequelize.INTEGER
       },
-      MoiveId: {
+      MovieId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

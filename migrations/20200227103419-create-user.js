@@ -20,12 +20,6 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
-      watchlistId: {
-        type: Sequelize.INTEGER
-      },
-      reviewId: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
