@@ -57,6 +57,7 @@ class Controller {
     } else {
       res.redirect("/");
     }
+<<<<<<< HEAD
   }
   static loginData(req, res) {
     let option = {
@@ -69,6 +70,51 @@ class Controller {
       .then(data => {
         if (!data) {
           res.send("salah email");
+=======
+    static movieList(req, res) {
+        let condition = {
+            order: [
+                ["id", "ASC"]
+            ]
+        };
+        Movie.findAll(condition)
+            .then(data => {
+                res.render("list", { data });
+            })
+            .catch(err => {
+                res.send(err);
+            });
+    }
+    static user(req, res) {
+        let id = req.session.user.id;
+        User.findOne({ where: id, include: Movie })
+            .then(data => {
+                res.send(data);
+            }).catch(err => {
+                res.send(err);
+            });
+    }
+    static addWatchList(req, res) {
+        if (!req.session.user) {
+            res.redirect('/login');
+        } else {
+            let option = {
+                UserId: req.session.user.id,
+                MovieId: req.params.movieId
+            }
+            console.log(option);
+            Watchlist.create(option)
+                .then(() => {
+                    res.send('Berhasil')
+                }).catch(err => {
+                    res.send(err);
+                });
+        }
+    }
+    static login(req, res) {
+        if (!req.session.user) {
+            res.render("login");
+>>>>>>> f9e53d65c9607e161b40ec3958df95e3e0de16fd
         } else {
           userData = data;
           let password = data.password;
