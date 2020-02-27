@@ -1,4 +1,4 @@
-const { User, Movie, ReviewList } = require('../models/index');
+const { User, Movie, Watchlist } = require('../models/index');
 
 // API KEY =  ee55e28c81ef2d96e16ed4fd23a15778
 class Controller{
@@ -23,6 +23,32 @@ class Controller{
         Movie.findOne({ where: { id: movieId }, include: ReviewList })
             .then(data => {
                 res.send(data);
+            }).catch(err => {
+                res.send(err);
+            });
+    }
+    static user(req, res) {
+        let option = {
+            where: {
+                id: Number(req.params.userId)
+            },
+            include: Movie
+        }
+        User.findOne(option)
+            .then(data => {
+                res.send(data);
+            }).catch(err => {
+                res.send(err);
+            });
+    }
+    static addWatchList(req, res) {
+        let option = {
+            UserId: req.params.userId,
+            MovieId: req.params.movieId
+        }
+        Watchlist.create(option)
+            .then(() => {
+                res.send('Berhasil')
             }).catch(err => {
                 res.send(err);
             });
