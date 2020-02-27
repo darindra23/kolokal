@@ -12,58 +12,56 @@
               >
                <%= data.getFullName() %>
               </h1>
-              <h2 class="subtitle is-size-4-desktop">
-                I design and code beautifully simple things, and I love what I
-                do.
-              </h2>
               <img
                 class="avatar"
                 src="https://mattfarley.ca/img/mf-avatar.svg"
               />
+              
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-foot">
-        <div class="container">
-          <div class="columns">
-            <% for (let i = 0; i < data.Movies.length; i++) { %>
-            <div class="column">
-              <div class="card">
-                <div class="card-image">
-                  <figure class="image is-4by2">
-                    <img
-                      src="https://image.tmdb.org/t/p/w600_and_h900_bestv2<%=data[i].poster_path %>"
-                    />
-                  </figure>
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                      <p class="title is-4"><%=data[i]%></p>
-                      <p class="subtitle is-6"><%=data[i] %></p>
-                    </div>
-                  </div>
-
-                  <div class="content">
-                    <%=data[i] %>
-                  </div>
-                  <a
-                    href=""
-                    style="color:hsl(171, 100%, 41%); text-align: center;"
-                  >
-                    <span class="icon"> <i class="fas fa-bookmark"></i> </span
-                    >Add to watchlist
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <%} %>
+            
           </div>
         </div>
       </div>
     </section>
+    <div class="container">
+        <div class="columns">
+          <% for (let i = 0; i < data.Movies.length; i++) { %>
+          <div class="column">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-4by2">
+                  <img
+                    src="https://image.tmdb.org/t/p/w600_and_h900_bestv2<%=data.Movies[i].poster_path %>"
+                  />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-4"><%=data.Movies[i].title %></p>
+                    <p class="subtitle is-6"><%=data.Movies[i].release_date %></p>
+                  </div>
+                </div>
+  
+                <div class="content">
+                  <%=data.Movies[i].summary %>
+                </div>
+                <a
+                  href="/add/watchlist/<%=data.Movies[i].id %>"
+                  style="color:hsl(171, 100%, 41%); text-align: center;"
+                >
+                  <span class="icon">
+                    <i class="fas fa-bookmark"></i> </span
+                  >Watched
+                </a>
+              </div>
+            </div>
+          </div>
+  
+          <%} %>
+        </div>
+      </div>
+  
   </body>
   <footer class="footer" style="background-color: #363636;;">
     <div class="content has-text-centered">
