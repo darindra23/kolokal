@@ -82,7 +82,8 @@ class Controller {
       .then(pass => {
         if (pass) {
           req.session.user = {
-            id: userData.id
+            id: userData.id,
+            name : userData.getFullName()
           };
           // res.send(req.session.user);
           // console.log(req.session.user);
