@@ -2,6 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Sequelize = sequelize.Sequelize;
   const Model = Sequelize.Model;
+  const { bycrpt } = require('../helpers/bycrypt');
 
   class User extends Model {
     getFullName() {
@@ -22,7 +23,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     email: DataTypes.STRING,
     password: DataTypes.STRING
-  }, { sequelize })
+  }, {
+    sequelize,
+    beforeCreate: (instance, options) => {
+      let password = instance.password;
+      instance.password = bycrpt(password);
+    }
+  })
 
 
   // const User = sequelize.define('User', {

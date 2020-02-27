@@ -59,6 +59,9 @@ class Controller {
     static register(req, res) {
         res.render("register");
     }
+    static registerData(req, res) {
+        
+    }
 }
 
 module.exports = Controller;
