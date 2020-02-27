@@ -60,7 +60,8 @@ class Controller {
         res.render("register");
     }
     static registerData(req, res) {
-        
+        console.log(req.body);
+        res.send(req.body);
     }
 }
 
