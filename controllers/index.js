@@ -28,19 +28,7 @@ class Controller {
       });
   }
   static user(req, res) {
-    let option = {
-      where: {
-        id: Number(req.params.userId)
-      },
-      include: Movie
-    };
-    User.findOne(option)
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.send(err);
-      });
+    res.render('user' , {data: [1,2,3,4]})
   }
   static addWatchList(req, res) {
     let option = {
@@ -84,9 +72,7 @@ class Controller {
           req.session.user = {
             id: userData.id
           };
-          // res.send(req.session.user);
-          // console.log(req.session.user);
-          res.redirect("/user/1");
+          res.redirect("/user");
         } else {
           res.send("Salah");
         }
@@ -94,8 +80,6 @@ class Controller {
       .catch(err => {
         res.send(err);
       });
-
-    // return compare()
   }
   static register(req, res) {
     res.render("register");
@@ -115,7 +99,6 @@ class Controller {
       .catch(err => {
         res.send(err);
       });
-    // res.send(req.body);
   }
 }
 
