@@ -31,13 +31,8 @@ class Controller {
             });
     }
     static user(req, res) {
-        let option = {
-            where: {
-                id: Number(req.params.userId)
-            },
-            include: Movie
-        }
-        User.findOne(option)
+        let id = req.session.user.id;
+        User.findOne({ where: id, include: Movie })
             .then(data => {
                 res.send(data);
             }).catch(err => {
@@ -82,11 +77,11 @@ class Controller {
             }).then(pass => {
                 if (pass) {
                     req.session.user = {
-                            id: userData.id
-                        }
-                        // res.send(req.session.user);
-                        // console.log(req.session.user);
-                    res.redirect('/user/1');
+                        id: userData.id
+                    }
+                    // res.send(req.session.user);
+                    // console.log(req.session.user);
+                    res.redirect('/user');
                 } else {
                     res.send('Salah');
                 }
